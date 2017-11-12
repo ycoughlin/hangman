@@ -39,14 +39,86 @@ var winCount = 0;
 var lossCount = 0;
 var livesLeft = 10;
 
+
 // For-loop buttons
 
-for (var i = 0; i < alphabet.lenght; i++) {
-  
+var buttons = function(){
+	myButtons = document.getElementById('buttons');
+	letters = document.createElement('ul');
+
+	for (var i = 0; i < alphabet.length; i++) {
+		letters.id = 'alphabet';
+		list = document.createElement('li');
+		list.id = 'letter';
+		list.innerHTML = alphabet[i];
+		check();
+		myButtons.appendChild(letters);
+		letters.appendChild(list);
+	}
 }
 
-// Main Process
+// Select Category
+  var selectCat = function () {
+    if (chosenCategory === categories[0]) {
+      catagoryName.innerHTML = "The Chosen Category Is Premier League Football Teams";
+    } else if (chosenCategory === categories[1]) {
+      catagoryName.innerHTML = "The Chosen Category Is Films";
+    } else if (chosenCategory === categories[2]) {
+      catagoryName.innerHTML = "The Chosen Category Is Cities";
+    }
+  }
+
+  // Create geusses ul
+   result = function () {
+    wordHolder = document.getElementById('hold');
+    correct = document.createElement('ul');
+
+    for (var i = 0; i < word.length; i++) {
+      correct.setAttribute('id', 'my-word');
+      guess = document.createElement('li');
+      guess.setAttribute('class', 'guess');
+      if (word[i] === "-") {
+        guess.innerHTML = "-";
+        space = 1;
+      } else {
+        guess.innerHTML = "_";
+      }
+
+      geusses.push(guess);
+      wordHolder.appendChild(correct);
+      correct.appendChild(guess);
+    }
+  }
+// Functions
+// document.onkeyup= function startGame(event) {
+// 	// body...
+// 	var key = event.key;
+// }
 
 function startGame () {
-	
+	selectedWord = rpgWords[Math.floor(Math.random()*rpgWords.length)];
+	lettersWord = selectedWord.split("");
+	numBlanks = lettersWord.length;
+
+
+	// Reset
+	livesLeft = 10;
+	wrongGuess = [];
+	correctGuess = [];
+
+	for (var i = 0; i < numBlanks.length; i++) {
+		correctGuess.push("_");
+	}
+
+	// Test
+	console.log(selectedWord);
+	console.log(lettersWord);
+	console.log(numBlanks);
+	console.log(correctGuess)
+
 }
+
+
+
+// Main Process
+startGame();
