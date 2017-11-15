@@ -58,15 +58,25 @@ var buttons = function(){
 }
 
 // Select Category
-  var selectCat = function () {
-    if (chosenCategory === categories[0]) {
-      catagoryName.innerHTML = "The Chosen Category Is Premier League Football Teams";
-    } else if (chosenCategory === categories[1]) {
-      catagoryName.innerHTML = "The Chosen Category Is Films";
-    } else if (chosenCategory === categories[2]) {
-      catagoryName.innerHTML = "The Chosen Category Is Cities";
-    }
+
+function randomWord(array) {
+  selectedWord = array[Math.floor(Math.random()*array.length)];
+  if (chosenCategory === categories[0]) {
+    randomWord(rpgWords);
+  } else if (chosenCategory === categories[1]) {
+    randomWord(comic);
   }
+}
+  // var randomWord = function () {
+  //   var 
+  //   if (chosenCategory === categories[0]) {
+  //     catagoryName.innerHTML = "";
+  //   } else if (chosenCategory === categories[1]) {
+  //     catagoryName.innerHTML = "";
+  //   } else if (chosenCategory === categories[2]) {
+  //     catagoryName.innerHTML = "";
+  //   }
+  // }
 
   // Create geusses ul
    result = function () {
